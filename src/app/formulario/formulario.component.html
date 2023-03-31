@@ -1,0 +1,78 @@
+<div class="card">
+  <p><b>Form: {{isCheck | json}}</b></p>
+
+  <div class="card-body">
+    <form [formGroup]="form" (submit)="sendLogin()" class="form">
+      <div class="mb-2">
+        <label class="form-label">
+          Nombre
+        </label>
+
+        <input type="text" formControlName="nombre" class="form-control" placeholder="Ingrese su nombre">
+
+        <div class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine">
+          El nombre es obligatorio
+        </div>
+
+      </div>
+      <div class="mb-2">
+        <label class="form-label">
+          Teléfono
+        </label>
+
+        <input type="text" formControlName="telefono" class="form-control" placeholder="Ingrese su teléfono">
+
+        <div class="alert alert-danger mt-2" [hidden]="telefono.valid || telefono.pristine">
+          El telefono no es válido
+        </div>
+
+      </div>
+      <div class="mb-2">
+        <label class="form-label">
+          Localidad
+        </label>
+
+        <input type="text" formControlName="localidad" class="form-control" placeholder="Ingrese su localidad">
+
+        <div class="alert alert-danger mt-2" [hidden]="localidad.valid || localidad.pristine">
+          La localidad es Obligatoria
+        </div>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">
+          Genero
+        </label>
+
+        <select name="genero" id="genero" class="form-control" formControlName="genero">
+          <option value="hombre">Hombre</option>
+          <option value="mujer">Mujer</option>
+          <option value="otro">Otro</option>
+        </select>
+        <div class="alert alert-danger mt-2" [hidden]="genero.valid">
+          Elige un genero
+        </div>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">
+          Email
+        </label>
+
+        <input type="email" formControlName="email" class="form-control" placeholder="Ingrese su email">
+
+        <div class="alert alert-danger mt-2" [hidden]="email.valid || email.pristine">
+          <span *ngIf="email.errors?.['required']">
+            El email es obligatorio
+          </span>
+          <span *ngIf="email.errors?.['email']">
+            El email debe ser válido
+          </span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary">
+        Enviar
+      </button>
+
+    </form>
+  </div>
+</div>
